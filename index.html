@@ -35,22 +35,31 @@
             outline: none;
         }
 
-        .p2 path,
-        .p2 rect{
+        .p2 path {
             stroke-linecap: round;
-            stroke-width: 3
+            stroke-width: 5;
+            stroke: #69D2E7;
+        }
+
+        .p2 rect {
+            fill: #69D2E7;
+
+        }
+
+        .p2 path:first-child {
+            stroke: #E0E4CC;
         }
 
         body {
-            background: #2d7e74;
+            background: #fff;
         }
     </style>
 </head>
 <body>
 
 
-<input disabled id="p1" type="range" max="200" min="100" data-width="50" data-height="50" data-angleOffset="220"
-       data-angleRange="280" data-startColor="#ffea05" data-endColor="#fc005c">
+<input disabled id="p1" type="range" min="0" max="10" data-width="50" data-height="50" data-angleOffset="220"
+       data-angleRange="280" data-startColor="#ffea05" data-endColor="#fc005c" step=".5">
 
 <input disabled id="p2" type="range" max="200" min="100" data-width="50" data-height="50" data-angleOffset="220"
        data-angleRange="280" data-startColor="#ffea05" data-endColor="#fc005c">
@@ -67,6 +76,51 @@
             <feMergeNode/>
             <feMergeNode in="SourceGraphic"/>
         </feMerge>
+    </filter>
+    <filter id='inner-shadow'>
+
+        <!-- Shadow Offset -->
+        <feOffset
+                dx='5'
+                dy='5'
+                />
+
+        <!-- Shadow Blur -->
+        <feGaussianBlur
+                stdDeviation='3'
+                result='offset-blur'
+                />
+
+        <!-- Invert the drop shadow
+             to create an inner shadow -->
+        <feComposite
+                operator='out'
+                in='SourceGraphic'
+                in2='offset-blur'
+                result='inverse'
+                />
+
+        <!-- Color & Opacity -->
+        <feFlood
+                flood-color='black'
+                flood-opacity='0.75'
+                result='color'
+                />
+
+        <!-- Clip color inside shadow -->
+        <feComposite
+                operator='in'
+                in='color'
+                in2='inverse'
+                result='shadow'
+                />
+
+        <!-- Put shadow over original object -->
+        <feComposite
+                operator='over'
+                in='shadow'
+                in2='SourceGraphic'
+                />
     </filter>
 </svg>
 </body>

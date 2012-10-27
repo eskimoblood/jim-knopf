@@ -48,7 +48,6 @@ module.exports = function(grunt) {
       },
       globals: {}
     },
-    uglify: {},
     buster: {
       test: {
         config: 'test/buster.js'
