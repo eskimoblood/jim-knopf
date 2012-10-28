@@ -10,6 +10,7 @@
         .p1 rect {
             fill: #57C7B6;
         }
+
         .p1 g polygon {
             opacity: 1;
         }
@@ -27,27 +28,40 @@
             font-family: sans-serif;
             font-weight: 300;
         }
-        div{
+
+        div {
             opacity: .9;
         }
-        div:focus{
+
+        div:focus {
             opacity: 1;
             outline: none;
         }
 
         .p2 path {
-            stroke-linecap: round;
-            stroke-width: 5;
+            stroke: none;
+            fill: #69D2E7;
             stroke: #69D2E7;
+            stroke-weight: .1;
+
         }
 
         .p2 rect {
             fill: #69D2E7;
+        }
+
+        .p3 path {
+            stroke: none;
+            fill: #69D2E7;
+            stroke: #69D2E7;
+            stroke-weight: .1;
 
         }
 
-        .p2 path:first-child {
-            stroke: #E0E4CC;
+        .p3 path:first-child {
+            fill: #E0E4CC;
+            stroke: none;
+            filter: url(#inner-shadow)
         }
 
         body {
@@ -64,9 +78,13 @@
 <input disabled id="p2" type="range" max="200" min="100" data-width="50" data-height="50" data-angleOffset="220"
        data-angleRange="280" data-startColor="#ffea05" data-endColor="#fc005c">
 
+<input disabled id="p3" type="range" max="200" min="100" data-width="50" data-height="50" data-angleOffset="220"
+       data-angleRange="280" data-startColor="#ffea05" data-endColor="#fc005c">
+
 <script type="text/javascript">
     new Knob(document.getElementById('p1'), new Ui.P1());
     new Knob(document.getElementById('p2'), new Ui.P2());
+    new Knob(document.getElementById('p3'), new Ui.P3());
 </script>
 <svg>
     <filter id="dropshadow" height="150%" width="150%">
@@ -81,13 +99,13 @@
 
         <!-- Shadow Offset -->
         <feOffset
-                dx='5'
-                dy='5'
+                dx='0'
+                dy='0'
                 />
 
         <!-- Shadow Blur -->
         <feGaussianBlur
-                stdDeviation='3'
+                stdDeviation='2'
                 result='offset-blur'
                 />
 
