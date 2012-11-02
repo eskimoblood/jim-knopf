@@ -5,6 +5,10 @@
     <title></title>
 
     <script type="text/javascript" src="dist/knob.js"></script>
+    <script type="text/javascript" src="lib/presets/p1.js"></script>
+    <script type="text/javascript" src="lib/presets/p2.js"></script>
+    <script type="text/javascript" src="lib/presets/p3.js"></script>
+    <script type="text/javascript" src="lib/presets/p4.js"></script>
     <style type="text/css">
         .p1 rect {
             fill: #57C7B6;
@@ -39,14 +43,16 @@
 
         .p2 path {
             stroke: none;
-            fill: #69D2E7;
-            stroke: #69D2E7;
+            fill: #CBE86B;
             stroke-weight: .1;
 
         }
+        .p2 path:first-child {
+            fill: #F2E9E1;
+        }
 
         .p2 rect {
-            fill: #69D2E7;
+            fill: #CBE86B;
         }
 
         .p3 path {
@@ -63,6 +69,17 @@
             filter: url(#inner-shadow)
         }
 
+        .p4 rect {
+            fill: #F8CA00;
+            opacity: .6;
+            -webkit-transition: all .7s ease-in-out;
+        }
+        .p4 .active {
+            fill: #490A3D;
+            opacity: 1;
+            -webkit-transition: all .1s ease-in-out;
+        }
+
         body {
             background: #fff;
         }
@@ -71,19 +88,23 @@
 <body>
 
 
-<input disabled id="p1" type="range" min="0" max="10" data-width="50" data-height="50" data-angleOffset="220"
+<input disabled id="p1" type="range" min="0" max="10" data-width="200" data-height="200" data-angleOffset="220"
        data-angleRange="280" data-startColor="#ffea05" data-endColor="#fc005c" step=".5">
 
-<input disabled id="p2" type="range" max="200" min="100" data-width="50" data-height="50" data-angleOffset="220"
+<input disabled id="p2" type="range" max="200" min="100" data-width="200" data-height="200" data-angleOffset="220"
        data-angleRange="280" data-startColor="#ffea05" data-endColor="#fc005c">
 
-<input disabled id="p3" type="range" max="200" min="100" data-width="50" data-height="50" data-angleOffset="220"
+<input disabled id="p3" type="range" max="200" min="100" data-width="200" data-height="200" data-angleOffset="220"
+       data-angleRange="280" data-startColor="#ffea05" data-endColor="#fc005c">
+
+<input disabled id="p4" type="range" max="300" min="100" data-width="200" data-height="200" data-angleOffset="220"
        data-angleRange="280" data-startColor="#ffea05" data-endColor="#fc005c">
 
 <script type="text/javascript">
     new Knob(document.getElementById('p1'), new Ui.P1());
     new Knob(document.getElementById('p2'), new Ui.P2());
     new Knob(document.getElementById('p3'), new Ui.P3());
+    new Knob(document.getElementById('p4'), new Ui.P4());
 </script>
 <svg>
     <filter id="dropshadow" height="150%" width="150%">
