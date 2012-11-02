@@ -2,9 +2,9 @@ var config = module.exports;
 
 config["My tests"] = {
   rootPath: "../",
-  environment: "browser", // or "node"
+  environment: "browser",
   sources: [
-    "lib/**/*.js"
+    "dist/knob.js"
   ],
   tests: [
     "test/*-test.js"
