@@ -14,12 +14,9 @@ module.exports = function(grunt) {
     lint: {
       files: ['grunt.js', 'lib/**/*.js']
     },
-    qunit: {
-      files: ['test/**/*.html']
-    },
     concat: {
       dist: {
-        src: ['lib/*.js'],
+        src: ['lib/knob.js', 'lib/ui/ui.js', 'lib/ui/ui.el.js'],
         dest: 'dist/knob.js'
       }
     },
@@ -30,8 +27,8 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: 'lib/**/*.js',
-      tasks: 'buster'
+      files: ['lib/**/*.js', 'test/**/*.js', 'grunt.js'],
+      tasks: 'concat min buster'
     },
     jshint: {
       options: {
@@ -57,7 +54,6 @@ module.exports = function(grunt) {
       }
     }
   });
-
 
   // BusterJs task.
   grunt.loadNpmTasks('grunt-buster');
