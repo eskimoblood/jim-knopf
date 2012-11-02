@@ -17,7 +17,7 @@ describe("Triangle", function() {
 
 describe("Rect", function() {
   it("creates an rect with 4 points and an offset", function() {
-    var rect = new Ui.El.Rect(20, 10, 10, 10);
+    var rect = new Ui.El.Rect(20, 10, 10, 5);
     assert.defined(rect);
     assert.defined(rect.node);
     assert.equals(rect.node.getAttribute('x'), '0');

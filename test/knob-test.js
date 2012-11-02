@@ -34,7 +34,7 @@ describe("Knob", function() {
   before(function() {
     "use strict";
     var div = document.createElement('div');
-    div.innerHTML = '<input disabled id="test" type="range" max="200" min="100" step="10" data-width="50" data-height="60" data-angleOffset="220" data-angleRange="280" data-startColor="#ffea05" data-endColor="#fc005c">';
+    div.innerHTML = '<input disabled id="test" type="range" max="200" min="100" step="10" data-width="50" data-height="60" data-angleOffset="90" data-angleRange="180" data-startColor="#ffea05" data-endColor="#fc005c">';
 
     input = div.getElementsByTagName('input')[0];
     init = sinon.spy();
@@ -56,8 +56,8 @@ describe("Knob", function() {
     assert.equals(settings.min, 100);
     assert.equals(settings.width, 50);
     assert.equals(settings.height, 60);
-    assert.equals(settings.angleoffset, 220);
-    assert.equals(settings.anglerange, 280);
+    assert.equals(settings.angleoffset, 90);
+    assert.equals(settings.anglerange, 180);
     assert.equals(settings.startcolor, '#ffea05');
     assert.equals(settings.endcolor, '#fc005c');
   });
@@ -108,6 +108,18 @@ describe("Knob", function() {
     });
   });
 
+  describe("on mouse move", function() {
+    it("generates the value", function() {
+      mouseClick(input.parentNode);
+      mouseMove(document.body, input.parentNode.offsetLeft + 25, input.parentNode.offsetTop + 60);
+      checkUpdate(update, 0.5, 150);
+      mouseMove(document.body, input.parentNode.offsetLeft , input.parentNode.offsetTop + 30);
+      checkUpdate(update, 1, 200);
+      mouseMove(document.body, input.parentNode.offsetLeft +50 , input.parentNode.offsetTop + 30);
+      checkUpdate(update, 0, 100);
+    });
+  });
+
   function checkUpdate(update, expectedPercent, expectedValue) {
     var percent = update.lastCall.args[0];
     var value = update.lastCall.args[1];
@@ -127,6 +139,22 @@ describe("Knob", function() {
     var eventObj = document.createEvent("Events");
     eventObj.initEvent("mousewheel", true, true);
     eventObj['wheelDelta' + direction] = value;
+    el.dispatchEvent(eventObj);
+  }
+
+  function mouseClick(el) {
+    var event = document.createEvent('MouseEvents');
+    event.initMouseEvent('mousedown', true, true,
+      document.defaultView, 1, 0, 0, 0, 0, false,
+      false, false, false, 1, null);
+    el.dispatchEvent(event);
+  }
+
+  function mouseMove(el, x, y) {
+    var eventObj = document.createEvent("Events");
+    eventObj.initEvent("mousemove", true, true);
+    eventObj.pageX = x;
+    eventObj.pageY = y;
     el.dispatchEvent(eventObj);
   }
 
