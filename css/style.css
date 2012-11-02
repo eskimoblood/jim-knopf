@@ -1,0 +1,24 @@
+ul {
+  list-style: none;
+}
+
+.row, .column {
+  display: -webkit-box;
+}
+
+.row >*,
+.column >* {
+  display: -webkit-box;
+  -webkit-box-flex: 1;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+}
+
+.column {
+  -webkit-box-orient: vertical;
+}
+
+.column  {
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+}
