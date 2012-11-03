@@ -1,7 +1,7 @@
 Jim Knopf is a small JavaScript library to create knobs using SVG.
 
 ##Supported Browser
-tested in latest Chrome, Firefox, Opera and Safari
+tested in latest Chrome, Firefox and Safari
 
 ##Dependencies
 none
