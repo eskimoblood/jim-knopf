@@ -1,0 +1,11 @@
+.p4 circle {
+  fill: #F8CA00;
+  opacity: .6;
+  -webkit-transition: all .4s ease-in-out;
+}
+
+.p4 .active {
+  fill: #490A3D;
+  opacity: 1;
+  -webkit-transition: all .1s ease-in-out;
+}

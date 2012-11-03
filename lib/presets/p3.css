@@ -1,0 +1,10 @@
+.p3 path {
+  stroke: none;
+  fill: #69D2E7;
+  filter: url(#inner-shadow)
+}
+
+.p3 path:first-child {
+  fill: #E0E4CC;
+  stroke: none;
+}

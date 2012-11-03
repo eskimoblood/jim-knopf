@@ -1,0 +1,44 @@
+.customize .p1 rect {
+  fill: #793A57;
+}
+
+
+.customize .p1 circle {
+  fill: rgba(93, 28, 64, 0.89);
+  stroke: #793A57;
+}
+
+.customize .p1 text {
+  fill: #793A57;
+  font-family: 'PT Sans', sans-serif;
+  ;
+}
+
+.customize .p1 text.active {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+.customize .p2 path {
+  fill: #E8175D;
+
+}
+
+.customize .p2 path:first-child {
+  fill: #474747;
+}
+
+.customize .p2 rect {
+  fill: #E8175D;
+}
+
+
+.customize .p3 path {
+  fill: #F1DB42;
+  filter: url(#inner-shadow)
+}
+
+.customize .p3 path:first-child {
+  fill: #F04158;
+}

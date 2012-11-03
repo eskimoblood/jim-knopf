@@ -4,98 +4,24 @@
 <head>
     <title></title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/customize-presets.css">
+    <link rel="stylesheet" href="lib/presets/p1.css">
+    <link rel="stylesheet" href="lib/presets/p2.css">
+    <link rel="stylesheet" href="lib/presets/p3.css">
+    <link rel="stylesheet" href="lib/presets/p4.css">
+
     <script type="text/javascript" src="dist/knob.js"></script>
     <script type="text/javascript" src="lib/presets/p1.js"></script>
     <script type="text/javascript" src="lib/presets/p2.js"></script>
     <script type="text/javascript" src="lib/presets/p3.js"></script>
     <script type="text/javascript" src="lib/presets/p4.js"></script>
-    <style type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 
-        body {
-            background: #CECECE;
-        }
-
-        .p1 rect {
-            fill: #57C7B6;
-        }
-
-        .p1 g polygon {
-            opacity: 1;
-        }
-
-        .p1 circle {
-            fill: #256058;
-            stroke: #57C7B6;
-            stroke-width: 2;
-            filter: url(#dropshadow);
-        }
-
-        .p1 text {
-            font-size: 10px;
-            fill: #57C7B6;
-            font-family: sans-serif;
-            font-weight: 300;
-            -webkit-transition: all 1s ease-in-out;
-        }
-
-        .p1 text.active {
-            font-size: 15px;
-            -webkit-transition: all .1s ease-in-out;
-        }
-
-        div {
-            opacity: .9;
-        }
-
-        div:focus {
-            opacity: 1;
-            outline: none;
-        }
-
-        .p2 path {
-            stroke: none;
-            fill: #CBE86B;
-            stroke-weight: .1;
-
-        }
-
-        .p2 path:first-child {
-            fill: #F2E9E1;
-        }
-
-        .p2 rect {
-            fill: #CBE86B;
-        }
-
-        .p3 path {
-            stroke: none;
-            fill: #69D2E7;
-            filter: url(#inner-shadow)
-        }
-
-        .p3 path:first-child {
-            fill: #E0E4CC;
-            stroke: none;
-        }
-
-        .p4 circle {
-            fill: #F8CA00;
-            opacity: .6;
-            -webkit-transition: all .4s ease-in-out;
-        }
-
-        .p4 .active {
-            fill: #490A3D;
-            opacity: 1;
-            -webkit-transition: all .1s ease-in-out;
-        }
-
-        body {
-            background: #fff;
-        }
-    </style>
 </head>
 <body>
+<h2>It has presets</h2>
+
+<p></p>
 <ul class="row">
     <li>
         <input class="preset1" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
@@ -114,7 +40,9 @@
                data-angleRange="280">
     </li>
 </ul>
+<h2>Scale it</h2>
 
+<p>As all knobs are made with SVG they scale. Use the <code>data-size</code> attribute to set the size of a knob</p>
 <ul class="row">
     <li>
         <input class="preset2" type="range" min="0" max="10" data-width="300" data-height="300" data-angleOffset="220"
@@ -135,28 +63,75 @@
                data-angleRange="280">
     </li>
 </ul>
+<h2>Customize it</h2>
 
+<p>
+    Customize the scale using <code>min</code>, <code>max</code>, <code>data-angleOffset</code> and
+    <code>data-angleRange</code>.
+    Where <code>min</code> & <code>max</code> defines the minimal and maximal value of the knob.
+    <code>data-angleOffset</code> sets the angle (in degree) where the scale starts, default is 0.
+    <code>data-angleRange</code> sets the range of the scale between 0 and 360 degree.
+    <code>step</code> define the step in which the value increase.
+</p>
 <ul class="row">
-    <li>
-        <input class="preset1" type="range" min="0" max="10" data-width="150" data-height="150" >
+    <li class="column">
+        <input class="preset1" type="range" min="0" max="10" data-width="150" data-height="150">
+        <code>min="0"</code>
+        <code>max="10"</code>
     </li>
-    <li>
+    <li class="column">
         <input class="preset1" type="range" min="0" max="10" data-width="150" data-height="150" data-angleOffset="270"
                data-angleRange="180" step="2">
+        <code>min="0"</code>
+        <code>max="10"</code>
+        <code>data-angleOffset="270</code>
+        <code>data-angleRange="180"</code>
+        <code>step="2"</code>
+    </li>
+    <li class="column">
+        <input class="preset1" type="range" min="-12" max="12" data-width="150" data-height="150" data-angleOffset="220"
+               data-angleRange="280" step="3">
+        <code>min="-12"</code>
+        <code> max="12"</code>
+        <code>data-angleOffset="220"</code>
+        <code>data-angleRange="280"</code>
+        <code>step="3"</code>
+    </li>
+</ul>
+<p>
+    As we using SVg we can style all parts of the knob with CSS
+</p>
+<ul class="row customize">
+    <li>
+        <input class="preset1" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
+               data-angleRange="280">
     </li>
     <li>
-        <input class="preset1" type="range" min="-10" max="10" data-width="150" data-height="150" data-angleOffset="220"
-               data-angleRange="280" step="2">
+        <input class="preset2" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
+               data-angleRange="280">
+    </li>
+    <li>
+        <input class="preset3" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
+               data-angleRange="280">
+    </li>
+    <li>
+        <input class="preset4" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
+               data-angleRange="280">
     </li>
 </ul>
 
 <script type="text/javascript">
+
+    /**
+     * Just a lazy way to convert all inputs into knobs.
+     * Normally you would write `new Knob(document.getElementById('someIdHere'), new Ui.P1());` to create a knob.
+     */
+
     for (var i = 1; i < 5; i++) {
         Array.prototype.slice.call(document.getElementsByClassName('preset' + i)).forEach(function(el) {
             new Knob(el, new Ui['P' + i]());
         })
     }
-
 </script>
 <svg>
     <filter id="dropshadow" height="150%" width="150%">

@@ -1,5 +1,23 @@
+body {
+  font-family: 'PT Sans', sans-serif;
+  color: #574742;
+}
+h2 {
+  background: #FF4242;
+  color: #fff;
+  padding: 3px 0 0 10px;
+
+}
+p {
+  padding: 0 0 0 10px;;
+}
 ul {
   list-style: none;
+  padding: 0;
+}
+
+li:not(:first-child) {
+  border-left: solid 1px #FF4242;
 }
 
 .row, .column {
@@ -16,6 +34,8 @@ ul {
 
 .column {
   -webkit-box-orient: vertical;
+  padding: 10px;
+
 }
 
 .column  {
