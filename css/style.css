@@ -22,18 +22,30 @@ li:not(:first-child) {
 
 .row, .column {
   display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  width: 100%;
 }
 
 .row >*,
 .column >* {
   display: -webkit-box;
+  display: -moz-box;
   -webkit-box-flex: 1;
   -webkit-box-align: center;
   -webkit-box-pack: center;
+  -moz-box-flex: 1;
+  -moz-box-align: center;
+  -moz-box-pack: center;
+  box-flex: 1;
+  box-align: center;
+  box-pack: center;
 }
 
 .column {
   -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
   padding: 10px;
 
 }
@@ -41,4 +53,8 @@ li:not(:first-child) {
 .column  {
   -webkit-box-align: center;
   -webkit-box-pack: center;
+  -moz-box-align: center;
+  -moz-box-pack: center;
+  box-align: center;
+  box-pack: center;
 }
