@@ -36,7 +36,6 @@
 
 .customize .p3 path {
   fill: #F1DB42;
-  filter: url(#inner-shadow)
 }
 
 .customize .p3 path:first-child {
