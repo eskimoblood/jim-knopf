@@ -24,9 +24,11 @@ li:not(:first-child) {
   display: -webkit-box;
   display: -moz-box;
   display: box;
-  width: 100%;
 }
 
+.row {
+  width: 100%;
+}
 .row >*,
 .column >* {
   display: -webkit-box;
