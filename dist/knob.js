@@ -31,10 +31,8 @@ Knob = function(input, ui) {
 
   container.style.cssText = 'position: relative; width:' + settings.width + 'px;' + 'height:' + settings.height + 'px;';
 
-  this.centerX = container.offsetLeft + settings.width / 2;
-  this.centerY = container.offsetTop + settings.height / 2;
-
   ui.init(container, settings);
+  this.container = container;
   this.changed(0);
 
 };
@@ -58,6 +56,8 @@ Knob.prototype = {
   },
 
   _handleMove: function(onMove, onEnd) {
+    this.centerX = this.container.offsetLeft + this.settings.width / 2;
+    this.centerY = this.container.offsetTop + this.settings.height / 2;
     var fnc = this._updateWhileMoving.bind(this);
     var body = document.body;
     body.addEventListener(onMove, fnc, false);
@@ -72,12 +72,17 @@ Knob.prototype = {
     var x = this.centerX - e.pageX;
     var y = this.centerY - e.pageY;
     var deg = Math.atan2(-y, -x) * 180 / Math.PI + 90 - this.settings.angleoffset;
+    var percent;
 
     if (deg < 0) {
       deg += 360;
     }
-
-    var percent = Math.max(Math.min(1, (deg ) % 360 / this.settings.anglerange), 0);
+    deg = deg % 360;
+    if (deg <= this.settings.anglerange) {
+      percent = Math.max(Math.min(1, deg / this.settings.anglerange), 0);
+    } else {
+      percent = +(deg - this.settings.anglerange < (360 - this.settings.anglerange) / 2);
+    }
     this.value = this.input.value = this.min + this.settings.range * percent;
 
     this.ui.update(percent, this.value);
