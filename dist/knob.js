@@ -194,9 +194,9 @@ Ui.Pointer.prototype.update = function(percent) {
 };
 
 Ui.Pointer.prototype.createElement = function(parentEl) {
-  this.options.pointerHeight ||(this.options.pointerHeight = this.height /2);
+  this.options.pointerHeight || (this.options.pointerHeight = this.height / 2);
   this.el = new Ui.El[this.options.type](this.options.pointerWidth,
-    this.options.pointerHeight , this.width / 2,
+    this.options.pointerHeight, this.width / 2,
     this.options.pointerHeight / 2 + this.options.offset);
   this.appendTo(parentEl);
 
@@ -217,18 +217,19 @@ Ui.Arc.prototype.update = function(percent) {
   this.el.setAngle(percent * this.options.anglerange);
 };
 
-Ui.Scala = function(options) {
+Ui.Scale = function(options) {
   this.options = this.merge({
-    steps: options.range/ options.step,
+    steps: options.range / options.step,
     radius: this.width / 2,
     tickWidth: 1,
     tickHeight: 3
   }, options);
+  this.options.type = Ui.El[this.options.type || 'Rect'];
 };
 
-Ui.Scala.prototype = Object.create(Ui.prototype);
+Ui.Scale.prototype = Object.create(Ui.prototype);
 
-Ui.Scala.prototype.createElement = function(parentEl) {
+Ui.Scale.prototype.createElement = function(parentEl) {
   this.el = new Ui.El(this.width, this.height);
   this.startAngle = this.options.angleoffset || 0;
   this.options.radius || (this.options.radius = this.height / 2.5);
@@ -238,8 +239,9 @@ Ui.Scala.prototype.createElement = function(parentEl) {
     var step = this.options.anglerange / this.options.steps;
     var end = this.options.steps + (this.options.anglerange == 360 ? 0 : 1);
     this.ticks = [];
+    var Shape = this.options.type;
     for (var i = 0; i < end; i++) {
-      var rect = new Ui.El.Circle(this.options.tickWidth, this.options.tickHeight, this.width / 2,
+      var rect = new Shape(this.options.tickWidth, this.options.tickHeight, this.width / 2,
         this.options.tickHeight / 2);
       rect.rotate(this.startAngle + i * step, this.width / 2, this.height / 2);
       this.el.append(rect);
@@ -252,21 +254,22 @@ Ui.Scala.prototype.createElement = function(parentEl) {
   }
 };
 
-Ui.Scala.prototype.dial = function() {
+Ui.Scale.prototype.dial = function() {
   var step = this.options.anglerange / this.options.steps;
   var min = this.options.min;
   var dialStep = (this.options.max - min) / this.options.steps;
   var end = this.options.steps + (this.options.anglerange == 360 ? 0 : 1);
   this.dials = [];
   for (var i = 0; i < end; i++) {
-    var text = new Ui.El.Text(Math.abs(min + dialStep * i), this.width / 2 - 2.5, this.height / 2 - this.options.radius);
+    var text = new Ui.El.Text(Math.abs(min + dialStep * i), this.width / 2 - 2.5,
+      this.height / 2 - this.options.radius);
     this.el.append(text);
     text.rotate(this.startAngle + i * step, this.width / 2, this.height / 2);
     this.dials.push(text);
   }
 };
 
-Ui.Scala.prototype.update = function(percent) {
+Ui.Scale.prototype.update = function(percent) {
   if (this.ticks) {
     if (this.activeStep) {
       this.activeStep.attr('class', '');
@@ -279,7 +282,9 @@ Ui.Scala.prototype.update = function(percent) {
       this.activeDial.attr('class', '');
     }
     this.activeDial = this.dials[Math.round(this.options.steps * percent)];
-    this.activeDial.attr('class', 'active');
+    if (this.activeDial) {
+      this.activeDial.attr('class', 'active');
+    }
   }
 };
 
@@ -345,6 +350,10 @@ Ui.El.Rect = function() {
 Ui.El.Rect.prototype = Object.create(Ui.El.prototype);
 
 Ui.El.Circle = function(radius, x, y) {
+  if (arguments.length == 4) {
+    x = arguments[2];
+    y = arguments[3];
+  }
   this.init(radius * 2, radius * 2, x, y);
   this.create("circle", {
     cx: this.x,

@@ -1,16 +1,27 @@
 body {
-  font-family: 'PT Sans', sans-serif;
+
+  font-family: 'Titillium Web', sans-serif;
   color: #574742;
 }
+
 h2 {
   background: #FF4242;
   color: #fff;
   padding: 3px 0 0 10px;
-
+  font-family: 'Lekton', sans-serif;
+  font-style: italic;
 }
+
+h3 {
+  font-family: 'Lekton', sans-serif;
+  font-style: italic;
+  color: #FF4242;
+}
+
 p {
   padding: 0 0 0 10px;;
 }
+
 ul {
   list-style: none;
   padding: 0;
@@ -29,6 +40,7 @@ li:not(:first-child) {
 .row {
   width: 100%;
 }
+
 .row >*,
 .column >* {
   display: -webkit-box;
@@ -52,7 +64,7 @@ li:not(:first-child) {
 
 }
 
-.column  {
+.column {
   -webkit-box-align: center;
   -webkit-box-pack: center;
   -moz-box-align: center;

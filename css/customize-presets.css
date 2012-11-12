@@ -38,7 +38,8 @@
   fill: #F04158;
 }
 
-.customize .p4 circle {
+.customize .p4 circle,
+.scaleExample  circle {
   -webkit-transition: none;
   opacity: 1;
 }
@@ -50,4 +51,9 @@
 .customize .p4 circle,
 .customize .p4 .active {
   fill: #3259CC;
+}
+
+
+.scale .active{
+  fill: red;
 }
