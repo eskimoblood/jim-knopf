@@ -2,7 +2,6 @@
   fill: #793A57;
 }
 
-
 .customize .p1 circle {
   fill: rgba(93, 28, 64, 0.89);
   stroke: #793A57;
@@ -11,14 +10,12 @@
 .customize .p1 text {
   fill: #793A57;
   font-family: 'PT Sans', sans-serif;
-  ;
 }
 
 .customize .p1 text.active {
   font-size: 15px;
   font-weight: bold;
 }
-
 
 .customize .p2 path {
   fill: #E8175D;
@@ -33,11 +30,24 @@
   fill: #E8175D;
 }
 
-
 .customize .p3 path {
   fill: #F1DB42;
 }
 
 .customize .p3 path:first-child {
   fill: #F04158;
+}
+
+.customize .p4 circle {
+  -webkit-transition: none;
+  opacity: 1;
+}
+
+.customize .p4 .active ~circle {
+  fill: #F2CB0C;
+}
+
+.customize .p4 circle,
+.customize .p4 .active {
+  fill: #3259CC;
 }
