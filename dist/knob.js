@@ -195,9 +195,14 @@ Ui.Pointer.prototype.update = function(percent) {
 
 Ui.Pointer.prototype.createElement = function(parentEl) {
   this.options.pointerHeight || (this.options.pointerHeight = this.height / 2);
-  this.el = new Ui.El[this.options.type](this.options.pointerWidth,
-    this.options.pointerHeight, this.width / 2,
-    this.options.pointerHeight / 2 + this.options.offset);
+  if (this.options.type == 'Arc') {
+    this.el = new Ui.El.Arc(this.options);
+    this.el.setAngle(this.options.size);
+  } else {
+    this.el = new Ui.El[this.options.type](this.options.pointerWidth,
+      this.options.pointerHeight, this.width / 2,
+      this.options.pointerHeight / 2 + this.options.offset);
+  }
   this.appendTo(parentEl);
 
 };
@@ -262,7 +267,7 @@ Ui.Scale.prototype.dial = function() {
   this.dials = [];
   for (var i = 0; i < end; i++) {
     var text = new Ui.El.Text(Math.abs(min + dialStep * i), this.width / 2 - 2.5,
-      this.height / 2 - this.options.radius);
+      this.height / 2 - this.options.radius, 5, 5);
     this.el.append(text);
     text.rotate(this.startAngle + i * step, this.width / 2, this.height / 2);
     this.dials.push(text);
@@ -286,6 +291,22 @@ Ui.Scale.prototype.update = function(percent) {
       this.activeDial.attr('class', 'active');
     }
   }
+};
+
+Ui.Text = function() {};
+
+Ui.Text.prototype = Object.create(Ui.prototype);
+
+Ui.Text.prototype.createElement = function(parentEl) {
+  this.parentEl = parentEl
+  this.el = new Ui.El.Text('', 0, this.height);
+  this.appendTo(parentEl);
+  this.el.center(parentEl);
+};
+
+Ui.Text.prototype.update = function(percent, value) {
+  this.el.node.textContent = value;
+  this.el.center(this.parentEl);
 };
 
 Ui.El = function() {};
@@ -364,15 +385,24 @@ Ui.El.Circle = function(radius, x, y) {
 
 Ui.El.Circle.prototype = Object.create(Ui.El.prototype);
 
-Ui.El.Text = function(text, x, y) {
+Ui.El.Text = function(text, x, y, width, height) {
   this.create('text', {
     x: x,
-    y: y
+    y: y,
+    width: width,
+    height: height
   });
   this.node.textContent = text;
 };
 
 Ui.El.Text.prototype = Object.create(Ui.El.prototype);
+
+Ui.El.Text.prototype.center = function(element) {
+  var width = element.getAttribute('width');
+  var height = element.getAttribute('height');
+  this.attr('x', width / 2 - this.node.getBBox().width / 2);
+  this.attr('y', height / 2 + this.node.getBBox().height / 4);
+};
 
 Ui.El.Arc = function(options) {
   this.options = options;

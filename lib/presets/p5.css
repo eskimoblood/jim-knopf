@@ -1,0 +1,15 @@
+.p5 circle {
+  stroke: #57C7B6;
+  fill: none;
+  stroke-width: 2;
+}
+
+.p5 text {
+  font-size: 40px;
+  fill: #57C7B6;
+  font-weight: 300;
+}
+
+.p5 path {
+  fill: #57C7B6;
+}

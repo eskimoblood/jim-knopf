@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['lib/**/*.js', 'test/**/*.js', 'grunt.js'],
+      files: ['lib/**/*.*', 'test/**/*.js', 'grunt.js'],
       tasks: 'concat min buster'
     },
     jshint: {
