@@ -1,0 +1,13 @@
+{
+  "author": "Andreas Koeberle <koeberle@gmail.com>",
+  "name": "jim-knopf",
+  "description": "library to create knobs and dials",
+  "version": "0.0.1",
+  "license": "MIT",
+  "devDependencies": {
+    "buster": "~0.6.0"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/buster-test"
+  }
+}
