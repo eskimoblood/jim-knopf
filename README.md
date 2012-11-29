@@ -9,6 +9,8 @@ Navigate trough knobs by tab key
 ##Example
 http://eskimoblood.github.com/jim-knopf/
 
+[![Build Status](https://secure.travis-ci.org/eskimoblood/jim-knopf.png?branch=master)](https://travis-ci.org/eskimoblood/jim-knopf)
+
 ##License
 The MIT License (MIT)
 Copyright (c) <2012> <Andreas Köberle>
