@@ -83,8 +83,11 @@ Knob.prototype = {
     } else {
       percent = +(deg - this.settings.anglerange < (360 - this.settings.anglerange) / 2);
     }
-    this.value = this.input.value = this.min + this.settings.range * percent;
+    var range = this.settings.range;
+    var value = this.min + range * percent;
 
+    var step = (this.settings.max - this.min) / range;
+    this.value = this.input.value = Math.round(value / step) * step;
     this.ui.update(percent, this.value);
   },
 
