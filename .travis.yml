@@ -1,6 +1,3 @@
-before_script:
-  - sudo npm install -g grunt
-
 script:
   - grunt buster --verbose --force
 

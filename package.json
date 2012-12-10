@@ -5,9 +5,8 @@
   "version": "0.0.1",
   "license": "MIT",
   "devDependencies": {
-    "buster": "~0.6.0"
-  },
-  "scripts": {
-    "test": "node_modules/.bin/buster-test"
+    "buster": "~0.6.0",
+    "grunt": "0.3.15",
+    "grunt-buster": "~0.1.2"
   }
 }
