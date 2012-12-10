@@ -1,14 +1,8 @@
 before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sleep 5
-  - node_modules/.bin/buster-server &
-  - sleep 5
-  - firefox http://localhost:1111/capture &
-  - sleep 5
+  - sudo npm install -g grunt
 
 script:
-  - "npm test"
+  - grunt test --verbose --force
 
 language: node_js
 
