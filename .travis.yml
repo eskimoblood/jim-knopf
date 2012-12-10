@@ -2,7 +2,7 @@ before_script:
   - sudo npm install -g grunt
 
 script:
-  - grunt test --verbose --force
+  - grunt buster --verbose --force
 
 language: node_js
 
