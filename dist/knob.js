@@ -105,17 +105,32 @@ Knob.prototype = {
     return Math.min(Math.max(this.settings.min, value), this.settings.max);
   },
   _getSettings: function(input) {
-    var settings = {
-      max: parseFloat(input.max),
-      min: parseFloat(input.min),
-      step: parseFloat(input.step) || 1,
-      angleoffset: 0,
-      anglerange: 360
-    };
+    var settings = {};
+    if(input.dataset.labels){
+      var values = input.dataset.labels.split(',');
+      settings = {
+        max: values.length-1,
+        min: 0,
+        step: 1,
+        angleoffset: 0,
+        anglerange: 360,
+        labels: values
+      }
+    } else 
+      settings = {
+        max: parseFloat(input.max),
+        min: parseFloat(input.min),
+        step: parseFloat(input.step) || 1,
+        angleoffset: 0,
+        anglerange: 360,
+        labels: null
+      };
     settings.range = settings.max - settings.min;
     var data = input.dataset;
     for (var i in data) {
-      if (data.hasOwnProperty(i)) {
+      if(i=='labels'){
+
+      } else if (data.hasOwnProperty(i)) {
         var value = +data[i];
         settings[i] = isNaN(value) ? data[i] : value;
       }
@@ -206,6 +221,7 @@ Ui.Pointer.prototype.createElement = function(parentEl) {
       this.options.pointerHeight, this.width / 2,
       this.options.pointerHeight / 2 + this.options.offset);
   }
+  // this.el.addClassName('pointer');
   this.appendTo(parentEl);
 
 };
@@ -244,17 +260,19 @@ Ui.Scale.prototype.createElement = function(parentEl) {
   this.el.create("g");
   this.el.addClassName('scale');
   if (this.options.drawScale) {
-    var step = this.options.anglerange / this.options.steps;
-    var end = this.options.steps + (this.options.anglerange == 360 ? 0 : 1);
-    this.ticks = [];
-    var Shape = this.options.type;
-    for (var i = 0; i < end; i++) {
-      var rect = new Shape(this.options.tickWidth, this.options.tickHeight, this.width / 2,
-        this.options.tickHeight / 2);
-      rect.rotate(this.startAngle + i * step, this.width / 2, this.height / 2);
-      this.el.append(rect);
-      this.ticks.push(rect);
-    }
+    if(!this.options.labels){
+      var step = this.options.anglerange / this.options.steps;
+      var end = this.options.steps + (this.options.anglerange == 360 ? 0 : 1);
+      this.ticks = [];
+      var Shape = this.options.type;
+      for (var i = 0; i < end; i++) {
+        var rect = new Shape(this.options.tickWidth, this.options.tickHeight, this.width / 2,
+          this.options.tickHeight / 2);
+        rect.rotate(this.startAngle + i * step, this.width / 2, this.height / 2);
+        this.el.append(rect);
+        this.ticks.push(rect);
+      }  
+    } 
   }
   this.appendTo(parentEl);
   if (this.options.drawDial) {
@@ -268,13 +286,28 @@ Ui.Scale.prototype.dial = function() {
   var dialStep = (this.options.max - min) / this.options.steps;
   var end = this.options.steps + (this.options.anglerange == 360 ? 0 : 1);
   this.dials = [];
-  for (var i = 0; i < end; i++) {
-    var text = new Ui.El.Text(Math.abs(min + dialStep * i), this.width / 2 - 2.5,
-      this.height / 2 - this.options.radius, 5, 5);
-    this.el.append(text);
-    text.rotate(this.startAngle + i * step, this.width / 2, this.height / 2);
-    this.dials.push(text);
+  if(!this.options.labels){
+    for (var i = 0; i < end; i++) {
+      var text = new Ui.El.Text(Math.abs(min + dialStep * i), this.width / 2 - 2.5,
+        this.height / 2 - this.options.radius, 5, 5);
+      this.el.append(text);
+      text.rotate(this.startAngle + i * step, this.width / 2, this.height / 2);
+      this.dials.push(text);
+    }
+  } else {
+    step = this.options.anglerange / (this.options.labels.length-1);
+    for(var i=0; i<this.options.labels.length; i++){
+      var label = this.options.labels[i];
+      console.debug(label);
+      var text = new Ui.El.Text(label, this.width / 2 - 2.5,
+        this.height / 2 - this.options.radius, 5, 5);
+      this.el.append(text);
+      text.rotate(this.startAngle + i * step, this.width / 2, this.height / 2);
+      text.attr('text-anchor', 'middle');
+      this.dials.push(text);
+    }
   }
+  
 };
 
 Ui.Scale.prototype.update = function(percent) {
