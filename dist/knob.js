@@ -298,7 +298,6 @@ Ui.Scale.prototype.dial = function() {
     step = this.options.anglerange / (this.options.labels.length-1);
     for(var i=0; i<this.options.labels.length; i++){
       var label = this.options.labels[i];
-      console.debug(label);
       var text = new Ui.El.Text(label, this.width / 2 - 2.5,
         this.height / 2 - this.options.radius, 5, 5);
       this.el.append(text);

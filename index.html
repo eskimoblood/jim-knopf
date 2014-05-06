@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title></title>
     <link rel="stylesheet" href="css/style.css">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="lib/presets/p3.css">
     <link rel="stylesheet" href="lib/presets/p4.css">
     <link rel="stylesheet" href="lib/presets/p5.css">
+    <link rel="stylesheet" href="lib/presets/p6.css">
 
     <script type="text/javascript" src="dist/knob.js"></script>
     <script type="text/javascript" src="lib/presets/p1.js"></script>
@@ -18,161 +20,154 @@
     <script type="text/javascript" src="lib/presets/p5.js"></script>
     <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lekton:400italic' rel='stylesheet' type='text/css'>
-    <link href="http://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,700" rel="stylesheet"
-          type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,700" rel="stylesheet" type="text/css">
     <style>
-        .p1 circle {
-            filter: url(#dropshadow);
-        }
-
-        .p3 path {
-            filter: url(#inner-shadow)
-        }
-
+    .p1 circle {
+        filter: url(#dropshadow);
+    }
+    .p3 path {
+        filter: url(#inner-shadow)
+    }
     </style>
 </head>
+
 <body>
-<a href="https://github.com/eskimoblood/jim-knopf"><img style="position: absolute; top: 0; right: 0; border: 0;"
-                                                        src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
-                                                        alt="Fork me on GitHub"></a>
+    <a href="https://github.com/eskimoblood/jim-knopf">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
+    </a>
 
-<h2>Presets</h2>
+    <h2>Presets</h2>
 
-<p></p>
-<ul class="row">
-    <li>
-        <input class="preset1" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-    <li>
-        <input class="preset2" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-    <li>
-        <input class="preset3" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-    <li>
-        <input class="preset4" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-    <li>
-        <input class="preset5" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-</ul>
-<h2>Scale it</h2>
-
-<p>As all knobs are made with SVG they scale. Use the <code>data-size</code> attribute to set the size of a knob</p>
-<ul class="row">
-    <li class="column">
-        <input class="preset2" type="range" min="0" max="10" data-width="300" data-height="300" data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-    <li class="column">
-        <input class="preset2" type="range" min="0" max="10" data-width="200" data-height="200" data-angleOffset="220"
-               data-angleRange="280">
-        <input class="preset2" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-    <li class="column">
-        <input class="preset2" type="range" min="0" max="10" data-width="90" data-height="90" data-angleOffset="220"
-               data-angleRange="280">
-        <input class="preset2" type="range" min="0" max="10" data-width="60" data-height="60" data-angleOffset="220"
-               data-angleRange="280">
-        <input class="preset2" type="range" min="0" max="10" data-width="30" data-height="30" data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-</ul>
-<h2>Customize</h2>
-
-<p>
-    Customize the scale using <code>min</code>, <code>max</code>, <code>data-angleOffset</code> and
-    <code>data-angleRange</code>.
-    Where <code>min</code> & <code>max</code> defines the minimal and maximal value of the knob.
-    <code>data-angleOffset</code> sets the angle (in degree) where the scale starts, default is 0.
-    <code>data-angleRange</code> sets the range of the scale between 0 and 360 degree.
-    <code>step</code> define the step in which the value increase.
-</p>
-<ul class="row">
-    <li class="column">
-        <input class="preset1" type="range" min="0" max="10" data-width="150" data-height="150"/>
-        <code>min="0"</code>
-        <code>max="10"</code>
-    </li>
-    <li class="column">
-        <input class="preset1" type="range" data-width="150" data-height="150" data-angleOffset="270"
-               data-angleRange="180" step="1" data-labels="test1,test2,test3,test4,text5"/>
-        <code>min="0"</code>
-        <code>max="10"</code>
+    <p></p>
+    <ul class="row">
+        <li>
+            <input class="preset1" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+        <li>
+            <input class="preset2" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+        <li>
+            <input class="preset3" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+        <li>
+            <input class="preset4" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+        <li>
+            <input class="preset5" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+    </ul>
+    <h2>Knobs as switch</h2>
+    <p>Knobs can be used as switches too if they are supplied with a
+        <code>data-labels</code>attribute</p>
+    <p>
         <code>data-angleOffset="270</code>
+        <br>
         <code>data-angleRange="180"</code>
-        <code>step="2"</code>
-    </li>
-    <li class="column">
-        <input class="preset1" type="range" min="-12" max="12" data-width="150" data-height="150" data-angleOffset="220"
-               data-angleRange="280" step="3"/>
-        <code>min="-12"</code>
-        <code> max="12"</code>
-        <code>data-angleOffset="220"</code>
-        <code>data-angleRange="280"</code>
-        <code>step="3"</code>
-    </li>
-</ul>
-<p>
-    As the knobs are build with SVG all parts can by styled with CSS.
-</p>
-<ul class="row customize">
-    <li>
-        <input class="preset1" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-    <li>
-        <input class="preset2" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-    <li>
-        <input class="preset3" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-    <li>
-        <input class="preset4" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-</ul>
+        <br>
+        <code>data-labels="test1,test2,test3,test4,text5"</code>
+        <br>
+        <code>class="preset1"</code>
+        <br>
+    </p>
+    <ul class="row">
+        <li class="column">
+            <input class="preset1" type="range" data-width="150" data-height="150" data-angleOffset="270" data-angleRange="180" step="1" data-labels="test1,test2,test3,test4,text5" />
+            <code>class="preset1"</code>
+        </li>        
+    </ul>
+    <h2>Scale it</h2>
 
-<h2>Build your own</h2>
+    <p>As all knobs are made with SVG they scale. Use the
+        <code>data-size</code>attribute to set the size of a knob</p>
+    <ul class="row">
+        <li class="column">
+            <input class="preset2" type="range" min="0" max="10" data-width="300" data-height="300" data-angleOffset="220" data-angleRange="280">
+        </li>
+        <li class="column">
+            <input class="preset2" type="range" min="0" max="10" data-width="200" data-height="200" data-angleOffset="220" data-angleRange="280">
+            <input class="preset2" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+        <li class="column">
+            <input class="preset2" type="range" min="0" max="10" data-width="90" data-height="90" data-angleOffset="220" data-angleRange="280">
+            <input class="preset2" type="range" min="0" max="10" data-width="60" data-height="60" data-angleOffset="220" data-angleRange="280">
+            <input class="preset2" type="range" min="0" max="10" data-width="30" data-height="30" data-angleOffset="220" data-angleRange="280">
+        </li>
+    </ul>
+    <h2>Customize</h2>
 
-<p>All knobs can be build of the following components</p>
-<ul class="row">
-    <li class="column">
-        <h3>Pointer</h3>
-        <input class="pointerExample" type="range" min="0" max="10" data-width="100" data-height="100"
-               data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-    <li class="column">
-        <h3>Arc</h3>
-        <input class="arcExample" type="range" min="0" max="10" data-width="100" data-height="100"
-               data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-    <li class="column">
-        <h3>Scale</h3>
-        <input class="scaleExample" type="range" min="0" max="10" data-width="100" data-height="100"
-               data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-    <li class="column">
-        <h3>Dial</h3>
-        <input class="dialExample" type="range" min="0" max="10" data-width="100" data-height="100"
-               data-angleOffset="220"
-               data-angleRange="280">
-    </li>
-</ul>
+    <p>
+        Customize the scale using
+        <code>min</code>,
+        <code>max</code>,
+        <code>data-angleOffset</code>and
+        <code>data-angleRange</code>. Where
+        <code>min</code>&
+        <code>max</code>defines the minimal and maximal value of the knob.
+        <code>data-angleOffset</code>sets the angle (in degree) where the scale starts, default is 0.
+        <code>data-angleRange</code>sets the range of the scale between 0 and 360 degree.
+        <code>step</code>define the step in which the value increase.
+    </p>
+    <ul class="row">
+        <li class="column">
+            <input class="preset1" type="range" min="0" max="10" data-width="150" data-height="150" />
+            <code>min="0"</code>
+            <code>max="10"</code>
+        </li>
+        <li class="column">
 
-<script type="text/javascript">
+            <input class="preset2" type="range" min="0" max="10" data-width="200" data-height="200" data-angleOffset="220" data-angleRange="280">
+            <input class="preset2" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+        <li class="column">
+            <input class="preset1" type="range" min="-12" max="12" data-width="150" data-height="150" data-angleOffset="220" data-angleRange="280" step="3" />
+            <code>min="-12"</code>
+            <code>max="12"</code>
+            <code>data-angleOffset="220"</code>
+            <code>data-angleRange="280"</code>
+            <code>step="3"</code>
+        </li>
+    </ul>
+    <p>
+        As the knobs are build with SVG all parts can by styled with CSS.
+    </p>
+    <ul class="row customize">
+        <li>
+            <input class="preset1" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+        <li>
+            <input class="preset2" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+        <li>
+            <input class="preset3" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+        <li>
+            <input class="preset4" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+    </ul>
 
+    <h2>Build your own</h2>
+
+    <p>All knobs can be build of the following components</p>
+    <ul class="row">
+        <li class="column">
+            <h3>Pointer</h3>
+            <input class="pointerExample" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+        <li class="column">
+            <h3>Arc</h3>
+            <input class="arcExample" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+        <li class="column">
+            <h3>Scale</h3>
+            <input class="scaleExample" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+        <li class="column">
+            <h3>Dial</h3>
+            <input class="dialExample" type="range" min="0" max="10" data-width="100" data-height="100" data-angleOffset="220" data-angleRange="280">
+        </li>
+    </ul>
+
+    <script type="text/javascript">
     /**
      * Just a lazy way to convert all inputs into knobs.
      * Normally you would write `new Knob(document.getElementById('someIdHere'), new Ui.P1());` to create a knob.
@@ -262,62 +257,38 @@
         this.el.node.setAttribute("class", "arcExample");
     };
     new Knob(document.getElementsByClassName('arcExample')[0], new Arcxample());
+    </script>
+    <svg>
+        <filter id="dropshadow" height="150%" width="150%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+            <feOffset dx="0" dy="3" result="offsetblur" />
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+        <filter id='inner-shadow'>
 
-</script>
-<svg>
-    <filter id="dropshadow" height="150%" width="150%">
-        <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-        <feOffset dx="0" dy="3" result="offsetblur"/>
-        <feMerge>
-            <feMergeNode/>
-            <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-    </filter>
-    <filter id='inner-shadow'>
+            <!-- Shadow Offset -->
+            <feOffset dx='0' dy='5' />
 
-        <!-- Shadow Offset -->
-        <feOffset
-                dx='0'
-                dy='5'
-                />
+            <!-- Shadow Blur -->
+            <feGaussianBlur stdDeviation='5' result='offset-blur' />
 
-        <!-- Shadow Blur -->
-        <feGaussianBlur
-                stdDeviation='5'
-                result='offset-blur'
-                />
-
-        <!-- Invert the drop shadow
+            <!-- Invert the drop shadow
              to create an inner shadow -->
-        <feComposite
-                operator='out'
-                in='SourceGraphic'
-                in2='offset-blur'
-                result='inverse'
-                />
+            <feComposite operator='out' in='SourceGraphic' in2='offset-blur' result='inverse' />
 
-        <!-- Color & Opacity -->
-        <feFlood
-                flood-color='black'
-                flood-opacity='0.75'
-                result='color'
-                />
+            <!-- Color & Opacity -->
+            <feFlood flood-color='black' flood-opacity='0.75' result='color' />
 
-        <!-- Clip color inside shadow -->
-        <feComposite
-                operator='in'
-                in='color'
-                in2='inverse'
-                result='shadow'
-                />
+            <!-- Clip color inside shadow -->
+            <feComposite operator='in' in='color' in2='inverse' result='shadow' />
 
-        <!-- Put shadow over original object -->
-        <feComposite
-                operator='over'
-                in='shadow'
-                in2='SourceGraphic'
-                />
-    </filter>
-</svg>
+            <!-- Put shadow over original object -->
+            <feComposite operator='over' in='shadow' in2='SourceGraphic' />
+        </filter>
+    </svg>
 </body>
+
 </html>
