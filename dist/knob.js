@@ -106,31 +106,22 @@ Knob.prototype = {
   },
   _getSettings: function(input) {
     var settings = {};
+    var labels; 
     if(input.dataset.labels){
-      var values = input.dataset.labels.split(',');
-      settings = {
-        max: values.length-1,
-        min: 0,
-        step: 1,
-        angleoffset: 0,
-        anglerange: 360,
-        labels: values
-      }
-    } else 
-      settings = {
-        max: parseFloat(input.max),
-        min: parseFloat(input.min),
-        step: parseFloat(input.step) || 1,
-        angleoffset: 0,
-        anglerange: 360,
-        labels: null
-      };
+      labels = input.dataset.labels.split(',');
+    }
+    settings = {
+      max: labels ? labels.length-1 : parseFloat(input.max),
+      min: labels ? 0 : parseFloat(input.min),
+      step: parseFloat(input.step) || 1,
+      angleoffset: 0,
+      anglerange: 360,
+      labels: labels
+    };
     settings.range = settings.max - settings.min;
     var data = input.dataset;
     for (var i in data) {
-      if(i=='labels'){
-
-      } else if (data.hasOwnProperty(i)) {
+      if (data.hasOwnProperty(i) && i!=='labels') {
         var value = +data[i];
         settings[i] = isNaN(value) ? data[i] : value;
       }
