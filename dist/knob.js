@@ -104,13 +104,12 @@ Knob.prototype = {
   limit: function(value) {
     return Math.min(Math.max(this.settings.min, value), this.settings.max);
   },
-  _getSettings: function(input) {
-    var settings = {};
+  _getSettings: function(input) {    
     var labels; 
     if(input.dataset.labels){
       labels = input.dataset.labels.split(',');
     }
-    settings = {
+    var settings = {
       max: labels ? labels.length-1 : parseFloat(input.max),
       min: labels ? 0 : parseFloat(input.min),
       step: parseFloat(input.step) || 1,
@@ -212,7 +211,7 @@ Ui.Pointer.prototype.createElement = function(parentEl) {
       this.options.pointerHeight, this.width / 2,
       this.options.pointerHeight / 2 + this.options.offset);
   }
-  // this.el.addClassName('pointer');
+  this.el.addClassName('pointer');
   this.appendTo(parentEl);
 
 };
