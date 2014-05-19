@@ -431,7 +431,9 @@ Ui.El.Text.prototype.center = function(element) {
 
 Ui.El.Arc = function(options) {
   this.options = options;
-  this.options.angleoffset = (options.angleoffset || 0) - 90;
+  //when there are lables, do not shift the arc other wise it will be 180 degree off 
+  //compared to the labels
+  this.options.angleoffset = (options.angleoffset || 0) - (this.options.labels?0:90);
   this.create('path');
 };
 
@@ -448,6 +450,12 @@ Ui.El.Arc.prototype.getCoords = function(angle) {
   var innerRadius = this.options.innerRadius || this.options.width / 2 - this.options.arcWidth;
   var startAngleDegree = Math.PI * startAngle / 180;
   var endAngleDegree = Math.PI * (startAngle + angle) / 180;
+  //position the arc so that it's shifted half an angle backward so that it's middle aligned
+  //when there're lables
+  if(this.options.labels){
+    startAngleDegree = Math.PI * (startAngle - angle/2)  / 180;
+    endAngleDegree = Math.PI * (startAngle + angle/2) / 180;
+  }
   var center = this.options.width / 2;
 
   var p1 = pointOnCircle(outerRadius, endAngleDegree);

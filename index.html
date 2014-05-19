@@ -29,6 +29,12 @@
             filter: url(#inner-shadow)
         }
 
+        .p6 text {
+          font-size: 12px !important;
+          fill: #57C7B6;
+          font-weight: 300;
+        }
+
     </style>
 </head>
 <body>
@@ -70,8 +76,44 @@
         <code>data-angleRange="180"</code><br>
         <code>data-labels="test1,test2,test3,test4,text5"</code><br>
         <code>class="preset1"</code><br>
-    </li>        
+    </li>    
+    <li class="column">
+        <input id='p6' type="range" data-width="150" data-height="150" data-angleOffset="270" data-angleRange="180" data-labels="test1,test2,test3,test4,text5,text6" />
+        <code>data-angleOffset="270</code><br>
+        <code>data-angleRange="180"</code><br>
+        <code>data-labels="test1,test2,test3,test4,text5"</code><br>
+        <code>class="preset1"</code><br>
+    </li>    
+
 </ul>
+<script type="text/javascript">
+Ui.P6 = function() {};
+
+Ui.P6.prototype = Object.create(Ui.prototype);
+
+Ui.P6.prototype.createElement = function() {
+  Ui.prototype.createElement.apply(this, arguments);  
+  this.addComponent(new Ui.Pointer({
+    type: 'Arc',
+    size: 30,
+    outerRadius: this.width / 2.6,
+    innerRadius: this.width / 2.6 - this.width / 6,
+    angleoffset: this.options.angleoffset
+  }));
+  // this.addComponent(new Ui.Text());
+  this.addComponent(new Ui.Scale(this.merge(this.options, {
+    drawScale: false,
+    drawDial: true,
+    radius: this.width/2.5
+  })));
+  var circle = new Ui.El.Circle(this.width / 2.1, this.width / 2, this.height / 2);
+  this.el.node.appendChild(circle.node);
+  this.el.node.setAttribute("class", "p5 p6");
+};
+
+new Knob(document.getElementById('p6'), new Ui.P6());    
+
+</script>
 <h2>Scale it</h2>
 
 <p>As all knobs are made with SVG they scale. Use the <code>data-size</code> attribute to set the size of a knob</p>
