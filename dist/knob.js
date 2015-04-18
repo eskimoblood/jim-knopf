@@ -56,8 +56,9 @@ Knob.prototype = {
   },
 
   _handleMove: function(onMove, onEnd) {
-    this.centerX = this.container.offsetLeft + this.settings.width / 2;
-    this.centerY = this.container.offsetTop + this.settings.height / 2;
+    this.centerX = Math.floor(this.container.getBoundingClientRect().left)+ document.body.scrollLeft + this.settings.width / 2;
+    this.centerY = Math.floor(this.container.getBoundingClientRect().top)+ document.body.scrollTop + this.settings.height / 2;
+
     var fnc = this._updateWhileMoving.bind(this);
     var body = document.body;
     body.addEventListener(onMove, fnc, false);
@@ -104,8 +105,10 @@ Knob.prototype = {
   limit: function(value) {
     return Math.min(Math.max(this.settings.min, value), this.settings.max);
   },
-  _getSettings: function(input) {    
-    var labels; 
+
+  _getSettings: function(input) {
+    var labels;
+
     if(input.dataset.labels){
       labels = input.dataset.labels.split(',');
     }
@@ -295,8 +298,8 @@ Ui.Scale.prototype.dial = function() {
       text.attr('text-anchor', 'middle');
       this.dials.push(text);
     }
+
   }
-  
 };
 
 Ui.Scale.prototype.update = function(percent) {
@@ -431,9 +434,10 @@ Ui.El.Text.prototype.center = function(element) {
 
 Ui.El.Arc = function(options) {
   this.options = options;
-  //when there are lables, do not shift the arc other wise it will be 180 degree off 
+  //when there are lables, do not shift the arc other wise it will be 180 degree off
   //compared to the labels
   this.options.angleoffset = (options.angleoffset || 0) - (this.options.labels?0:90);
+
   this.create('path');
 };
 
@@ -448,11 +452,6 @@ Ui.El.Arc.prototype.getCoords = function(angle) {
   var startAngle = this.options.angleoffset;
   var outerRadius = this.options.outerRadius || this.options.width / 2;
   var innerRadius = this.options.innerRadius || this.options.width / 2 - this.options.arcWidth;
-  //position the arc so that it's shifted half an angle backward so that it's middle aligned
-  //when there're lables
-  if(this.options.labels){
-    startAngle -= angle/2;
-  }
   var startAngleDegree = Math.PI * startAngle / 180;
   var endAngleDegree = Math.PI * (startAngle + angle) / 180;
   var center = this.options.width / 2;
