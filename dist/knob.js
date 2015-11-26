@@ -98,6 +98,12 @@ Knob.prototype = {
     this.ui.update(this._valueToPercent(), this.value);
   },
 
+  update: function(value) {
+    this.input.value = this.limit(value);
+    this.value = this.input.value;
+    this.ui.update(this._valueToPercent(), this.value);
+  },
+
   _valueToPercent: function() {
     return  this.value != null ? 100 / this.settings.range * (this.value - this.min) / 100 : this.min;
   },
@@ -264,8 +270,8 @@ Ui.Scale.prototype.createElement = function(parentEl) {
         rect.rotate(this.startAngle + i * step, this.width / 2, this.height / 2);
         this.el.append(rect);
         this.ticks.push(rect);
-      }  
-    } 
+      }
+    }
   }
   this.appendTo(parentEl);
   if (this.options.drawDial) {
