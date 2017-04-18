@@ -1,17 +1,17 @@
 Jim Knopf is a small JavaScript library to create knobs using SVG.
 
-##Supported Browser
+## Supported Browser
 tested in latest Chrome, Firefox, Opera, Safari and Mobile Safari
 
 Knobs can changed by moving mouse, keyboard (← ↑ → ↓ ),  mousewheel and  touchpad
 Navigate trough knobs by tab key
 
-##Example
+## Example
 http://eskimoblood.github.com/jim-knopf/
 
 [![Build Status](https://secure.travis-ci.org/eskimoblood/jim-knopf.png?branch=master)](https://travis-ci.org/eskimoblood/jim-knopf)
 
-##License
+## License
 The MIT License (MIT)
 Copyright (c) <2012> <Andreas Köberle>
 
